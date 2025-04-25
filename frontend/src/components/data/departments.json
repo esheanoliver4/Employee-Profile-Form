@@ -1,0 +1,7 @@
+[
+    { "id": "HR", "name": "Human Resources" },
+    { "id": "Engineering", "name": "Engineering" },
+    { "id": "Marketing", "name": "Marketing" },
+    { "id": "Sales", "name": "Sales" }
+  ]
+  
