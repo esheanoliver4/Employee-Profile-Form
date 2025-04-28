@@ -1,157 +1,447 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    margin: 0;
-    padding: 0;
-  }
-  .header{
-    background-color: #b1b2d4;
-    height: 5rem;
-    align-content: center;
-  }
-  h1 {
-    text-align: center;
-    margin: 0;
-  }
-  
-  /* Form Styles */
-  form {
-    width: 60%;
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: d5e9ff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  }
-  
-  form input,
-  form select,
-  form textarea,
-  form button {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  form input[type="text"],
-  form input[type="email"],
-  form input[type="number"],
-  form input[type="date"],
-  form select,
-  form textarea {
-    background-color: #f9f9f9;
-  }
-  
-  form input[type="checkbox"] {
-    width: auto;
-    margin-right: 10px;
-  }
-  
-  form button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #45a049;
-  }
-  
-  textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-  
-  form input[type="file"] {
-    background-color: #f9f9f9;
-    padding: 6px;
-  }
-  
-  form div {
-    margin-bottom: 15px;
-  }
-  
-  form label {
-    font-size: 14px;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  form input[type="radio"] {
-    margin-right: 10px;
-  }
-  
-  form select {
-    background-color: #f9f9f9;
-  }
-  
-  form select[multiple] {
-    height: 120px;
-  }
-  .gender-options {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-  
-  .gender-options label {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 34px;
-    height: 20px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .switch .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 50px;
-  }
-  
-  .switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 12px;
-    width: 12px;
-    border-radius: 50px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #4CAF50;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(14px);
-  }
-  /* Style for the loading spinner */
+  font-family: Arial, sans-serif;
+  background-color: #F8F9FA;
+  margin: 0;
+  padding: 0;
+  background: #6c2a9b;
+background: linear-gradient(90deg,rgba(108, 42, 155, 1) 0%, rgba(87, 119, 199, 1) 50%, rgba(237, 83, 201, 1) 100%);
+}
+
+/* Layout Styles */
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 20px;
+  max-width: 500px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.right-panel {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.header {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  color: white;
+}
+
+h2 {
+  color: white;
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.reset-button {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 2.5rem;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 14px;
+  transition: background-color 250ms;
+}
+
+.reset-button:hover {
+  background-color: brown;
+}
+
+/* Employee Cards Styles */
+.employee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.refresh-button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 2.5rem;
+  transition: background-color 250ms;
+}
+
+.refresh-button:hover {
+  background-color: #45a049;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.employee-card {
+  background-color: rgba(185, 185, 185, 0.34);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.employee-info {
+  padding: 15px;
+}
+
+.employee-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 18px;
+  text-shadow:
+  0 0 5px #ff0000,
+  0 0 10px #a24848,
+  0 0 15px #ff0000,
+  0 0 20px #a24848,
+  0 0 30px #a24848;
+}
+
+.employee-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: white;
+}
+
+.employee-info p strong {
+  color: white;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error-message button {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.no-data-message {
+  text-align: center;
+  padding: 30px;
+  color: #757575;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Form Styles - Systematic Input Fields */
+form {
+  width: 100%;
+  background-color: rgba(185, 185, 185, 0.34);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Form Field Container - Consistent Styling */
+form div {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* Label Styling - Consistent across all fields */
+form label {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+  color: white;
+}
+
+/* Base Input Styling - Applied to all input types */
+form input,
+form select,
+form textarea {
+  width: 100%;
+  height: 3rem;
+  padding: 8px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(185, 185, 185, 0.34);
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input Focus States */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+/* Input Hover States */
+form input:hover,
+form select:hover,
+form textarea:hover {
+  border-color: #999;
+}
+
+/* Specific Input Types */
+form input[type="file"] {
+  padding: 6px 12px;
+  background-color: rgba(185, 185, 185, 0.34);
+  border: 1px dashed #ccc;
+  cursor: pointer;
+}
+
+form input[type="date"] {
+  padding-right: 8px;
+}
+
+/* Select Input Styling */
+form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px;
+}
+
+form select[multiple] {
+  height: 120px;
+  background-image: none;
+  padding-right: 12px;
+}
+
+/* Textarea Styling */
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+}
+
+/* Phone Input Special Styling */
+.phone-input-wrapper {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 3rem;
+  margin: 10px 0;
+  background-color: rgba(185, 185, 185, 0.34);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.phone-input-wrapper:hover {
+  border-color: #4CAF50;
+}
+
+.phone-input-wrapper:focus-within {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.country-code-select {
+  width: 80px;
+  border: none;
+  background-color: rgba(185, 185, 185, 0.34);
+  padding: 8px 10px;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  border-right: 1px solid #ccc;
+  text-align: center;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  padding-right: 20px;
+}
+
+.phone-number-input {
+  border: none;
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 15px;
+  outline: none;
+  height: 100%;
+}
+
+/* Checkbox and Radio Button Styling */
+form input[type="checkbox"],
+form input[type="radio"] {
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Gender Options Styling */
+.gender-options {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  height: auto;
+  padding: 8px 0;
+}
+
+.gender-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* Toggle Switch Styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  margin-top: 8px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Submit Button Styling */
+form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  height: 3rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+.card-buttons {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+.preview-img{
+  margin-top: 10px;
+  width: 10rem;
+  height: 10rem;
+}
+/* Style for the loading spinner */
 .loading-spinner {
   position: absolute;
   top: 50%;
@@ -160,6 +450,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .spinner {
@@ -176,14 +467,33 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-  /* Responsive Styles */
-  @media screen and (max-width: 768px) {
-    form {
-      width: 90%;
-    }
-  
-    h1 {
-      font-size: 24px;
-    }
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+  .container {
+    flex-direction: column;
   }
   
+  .left-panel, .right-panel {
+    max-width: 100%;
+  }
+  
+  form {
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .header {
+    height: 4rem;
+  }
+
+}

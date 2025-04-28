@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const employeeRoutes = require('./routes/employee.routes'); // Make sure the path is correct
+const employeeRoutes = require('./routes/employee.routes'); // Import employee routes
 
 const app = express();
 
@@ -24,10 +24,21 @@ app.use((req, res, next) => {
   next();
 });
 
-// Register routes
+// Register employee routes
 app.use('/api', employeeRoutes);  // This makes /api/employees available
 
-// Handle 404
+// Adding GET route to fetch all employees
+app.get('/api/employees', async (req, res) => {
+  try {
+    const employees = await Employee.find(); // Fetch all employees from the database
+    res.status(200).json({ success: true, data: employees });
+  } catch (error) {
+    console.error('Error fetching employees:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch employees' });
+  }
+});
+
+// Handle 404 (Route not found)
 app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Route not found' });
 });
